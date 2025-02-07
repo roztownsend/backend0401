@@ -7,7 +7,7 @@ interface TaskContextProps {
     tasks: Task[];
     addTask: (text: string) => void;
     deleteTask: (text: string) => void;
-    toggleTask: (isComplete: boolean) => void;
+    toggleTask: (text: string) => void;
 }
 
 interface TaskProviderProps {
@@ -41,9 +41,14 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
         setTasks((tasks) => tasks.filter((task) => task.text !== text))
     }
 
-    const toggleTask = () => {
-        //...
-    }
+    const toggleTask = (text: string) => {
+        setTasks((oldTasks) => {
+            const updatedTasks = oldTasks.map((task) => 
+                task.text === text ? 
+                {...task, isComplete: !task.isComplete} : task)
+                return updatedTasks;
+            });
+    }    
 
     const contextValues = {
         tasks,
