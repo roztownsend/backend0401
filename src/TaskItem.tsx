@@ -11,7 +11,7 @@ const { deleteTask, toggleTask } = useContext(TaskContext);
 
     return (
         <div className="task-item">
-            {task.text}
+            <label style={{ textDecoration: task.isComplete ? "line-through" : undefined}}>{task.text}</label>
             <input type="checkbox"
                 onChange={() => toggleTask(task.text)} 
                 checked={task.isComplete}/>
