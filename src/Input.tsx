@@ -13,6 +13,7 @@ export const Input = ({ addTask }: InputProps) => {
     const handleSubmit = () => {
         addTask(text)
         setText("")
+        console.log("Task input:", text)
     }
 
     return (
