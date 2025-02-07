@@ -11,9 +11,6 @@ function App() {
 
    const { tasks, addTask } = useContext(TaskContext);
 
-   console.log("Task context ", TaskContext)
-
-
   return (
     <>
         <h1>Personal Task Manager</h1>

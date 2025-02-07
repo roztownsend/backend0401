@@ -31,17 +31,14 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     const [tasks, setTasks] = useState<Task[]>(dummyTasks)
 
     const addTask = (text: string) => {
-        console.log("2. Inside addTask function, adding:", text); // Debugging step
         setTasks(oldTasks => [
             ...oldTasks, 
             { id: Math.random(), text, isComplete: false }
         ]);
-        console.log("3. Updated Tasks:", tasks); // Debugging step
     };
 
     const deleteTask = (text: string) => {
         setTasks((tasks) => tasks.filter((task) => task.text !== text))
-        console.log("Updated Tasks: ", tasks)
     }
 
     const toggleTask = () => {
