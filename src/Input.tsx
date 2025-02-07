@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 
 interface InputProps {
-    addTask(text:string): void
+    addTask(text: string): void;
 }
 
 export const Input = ({ addTask }: InputProps) => {
@@ -13,14 +13,15 @@ export const Input = ({ addTask }: InputProps) => {
     const handleSubmit = () => {
         addTask(text)
         setText("")
-        console.log("Task input:", text)
+        console.log("1. Task input:", text)
     }
 
     return (
         <>
         <input
             value={text}
-            onChange={handleTextChange} />
+            onChange={handleTextChange}
+            placeholder="Enter a task!" />
             <button onClick={handleSubmit}>Add Task</button>
         </>
     )

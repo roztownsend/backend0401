@@ -21,22 +21,22 @@ interface TaskProviderProps {
   ];
 
   export const TaskContext = createContext<TaskContextProps>({
-    tasks: dummyTasks,
+    tasks: [],
     addTask: () => {},
     deleteTask: () => {},
     toggleTask: () => {},
 });
 
 const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
-    const [tasks, setTasks] = useState<Task[]>([])
+    const [tasks, setTasks] = useState<Task[]>(dummyTasks)
 
     const addTask = (text: string) => {
-        console.log("Inside addTask function, adding:", text); // Debugging step
+        console.log("2. Inside addTask function, adding:", text); // Debugging step
         setTasks(oldTasks => [
             ...oldTasks, 
             { id: Math.random(), text, isComplete: false }
         ]);
-        console.log("Updated Tasks:", tasks); // Debugging step
+        console.log("3. Updated Tasks:", tasks); // Debugging step
     };
 
     const deleteTask = (text: string) => {
