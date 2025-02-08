@@ -6,7 +6,7 @@ interface TaskItemProps { task: Task; }
 
 export const TaskItem = ({task}: TaskItemProps) => {
 
-const { deleteTask, toggleTask } = useContext(TaskContext);
+const { deleteTask, toggleTask, editTask } = useContext(TaskContext);
 
 
     return (
@@ -15,7 +15,7 @@ const { deleteTask, toggleTask } = useContext(TaskContext);
             <input type="checkbox"
                 onChange={() => toggleTask(task.text)} 
                 checked={task.isComplete}/>
-            <button>Edit</button>
+            <button onClick={() => editTask(task.id, task.text)}>Edit</button>
             <button onClick={() => deleteTask(task.text)}>Delete</button>
         </div>
     )
