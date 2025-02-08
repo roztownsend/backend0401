@@ -1,20 +1,8 @@
-import { Task } from "../annotations";
+import { Task, TaskContextProps } from "../annotations";
 import { createContext, useState, ReactNode } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
-//write an interface to hold task ACTIONS:
-
-interface TaskContextProps {
-    tasks: Task[];
-    currentTask: Task | null;
-    addTask: (text: string) => void;
-    deleteTask: (text: string) => void;
-    toggleTask: (text: string) => void;
-    editTask: (id: number, text: string) => void;
-    isEditing: boolean;
-    saveEditTask: (id: number, editedText: string) => void;
-    cancelEditTask: () => void;
-}
+//write an interface to hold task actions:
 
 interface TaskProviderProps {
     children: ReactNode;
