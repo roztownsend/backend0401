@@ -1,5 +1,6 @@
 import { Task } from "../annotations";
 import { createContext, useState, ReactNode } from "react";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 //write an interface to hold task ACTIONS:
 
@@ -38,7 +39,7 @@ interface TaskProviderProps {
 });
 
 const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
-    const [tasks, setTasks] = useState<Task[]>(dummyTasks);
+    const [tasks, setTasks] = useLocalStorage<Task[]>("tasks", dummyTasks);
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [currentTask, setCurrentTask] = useState<Task | null>(null);
 
@@ -46,7 +47,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
 
     const addTask = (text: string) => {
         if (text === "") {
-            alert("You entered nothing into the input. Enter a descriptive task.")
+            alert("You didn't enter anything. Enter a descriptive task.")
         } else {
             setTasks(oldTasks => [
                 ...oldTasks, 
