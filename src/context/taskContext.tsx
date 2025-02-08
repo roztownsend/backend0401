@@ -42,6 +42,8 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
         };
     };
 
+    //todo: implement check for duplicate task text.
+
     const deleteTask = (text: string) => {
         setTasks((tasks) => tasks.filter((task) => task.text !== text))
     }

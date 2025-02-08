@@ -9,7 +9,7 @@ import { TaskItem } from "./TaskItem"
 
 function App() {
 
-   const { tasks, addTask } = useContext(TaskContext);
+   const { tasks, addTask, editTask } = useContext(TaskContext);
 
   return (
     <>
@@ -23,7 +23,7 @@ function App() {
             ))}
           </div>
           <div className="tasklist-input">
-            <Input addTask={addTask} />
+            <Input addTask={addTask} editTask={editTask} />
           </div>
         </div>
     </>
