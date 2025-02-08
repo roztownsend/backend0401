@@ -27,16 +27,26 @@ export const Input = ({ addTask }: InputProps) => {
         setText("");
     }
 
+    const alternateSubmitLabels = isEditing ? "Save Task" : "Add Task";
+
     return (
         <>
         <input
             value={text}
+            aria-label="Enter task"
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter a task!" />
-            <button onClick={handleSubmit}>
-                {isEditing ? "Save Edit" : "Add Task"}
+            <button 
+                aria-label={alternateSubmitLabels}
+                onClick={handleSubmit}>
+                {alternateSubmitLabels}
             </button>
-            {isEditing && <button onClick={() => cancelEditTask()}>Cancel Edit</button>}
+            {isEditing && 
+            <button 
+                aria-label="Cancel Edit" 
+                onClick={() => cancelEditTask()}>
+                Cancel Edit
+            </button>}
         </>
     );
 };
