@@ -2,8 +2,6 @@ import { Task, TaskContextProps } from "../annotations";
 import { createContext, useState, ReactNode } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
-//write an interface to hold task actions:
-
 interface TaskProviderProps {
     children: ReactNode;
 }

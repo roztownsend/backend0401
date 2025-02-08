@@ -13,13 +13,19 @@ function App() {
 
   return (
     <>
-        <h1>Personal Task Manager</h1>
-        {tasks.map(task => (
-          <div key={task.id}>
-            <TaskItem key={task.id} task={task} />
+      <h1>Personal Task Manager</h1>
+        <div className="tasklist">
+          <div className="tasklist-items">
+            {tasks.map(task => (
+              <div key={task.id}>
+                <TaskItem key={task.id} task={task} />
+              </div>
+            ))}
           </div>
-        ))}
-        <Input addTask={addTask} />
+          <div className="tasklist-input">
+            <Input addTask={addTask} />
+          </div>
+        </div>
     </>
   )
 }

@@ -17,7 +17,8 @@ const accessLabels = {
 
     return (
         <div className="task-item">
-            <label style={{ textDecoration: task.isComplete ? "line-through" : undefined}}>{task.text}</label>
+            <label className="task-item__label" style={{ textDecoration: task.isComplete ? "line-through" : undefined}}>{task.text}</label>
+            <div className="task-item__actions">
                 <GrCheckboxSelected 
                     aria-label={accessLabels.toggle} 
                     title={accessLabels.toggle}
@@ -30,6 +31,7 @@ const accessLabels = {
                     aria-label={accessLabels.delete} 
                     title={accessLabels.delete}
                     onClick={() => deleteTask(task.text)}/>
+            </div>
         </div>
     )
 }
