@@ -8,4 +8,9 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  base: './', 
+  server: {
+    open: true,
+    hmr: true,
+  },
 })
