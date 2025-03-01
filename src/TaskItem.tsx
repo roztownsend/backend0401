@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { TaskContext } from "./context/taskContext";
 import { Task } from "./annotations";
-import { GrCheckboxSelected, GrEdit, GrTrash  } from "react-icons/gr";
+import { GrCheckbox, GrCheckboxSelected, GrEdit, GrTrash  } from "react-icons/gr";
 
 interface TaskItemProps { task: Task; }
 
@@ -13,6 +13,7 @@ const { deleteTask, toggleTask, editTask } = useContext(TaskContext);
 
 const accessLabels = {
     toggle: "Mark Complete",
+    untoggle: "Mark Incomplete",
     edit: "Edit Task",
     delete: "Delete Task"
 }
@@ -21,10 +22,16 @@ const accessLabels = {
         <div className="task-item">
             <label className="task-item__label" style={{ textDecoration: task.isComplete ? "line-through" : undefined}}>{task.text}</label>
             <div className="task-item__actions">
+                {task.isComplete ?                 
                 <GrCheckboxSelected 
+                    aria-label={accessLabels.untoggle} 
+                    title={accessLabels.untoggle}
+                    onClick={() => toggleTask(task.text)} /> :
+                <GrCheckbox 
                     aria-label={accessLabels.toggle} 
                     title={accessLabels.toggle}
-                    onClick={() => toggleTask(task.text)} />
+                    onClick={() => toggleTask(task.text)} /> 
+                }
                 <GrEdit 
                     aria-label={accessLabels.edit} 
                     title={accessLabels.edit}
