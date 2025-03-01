@@ -16,6 +16,7 @@ interface TaskProviderProps {
     tasks: [],
     currentTask: null,
     addTask: () => {},
+    checkDuplicate: () => false,
     deleteTask: () => {},
     toggleTask: () => {},
     editTask: () => {},
@@ -32,6 +33,9 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     let updatedTasks;
 
     const addTask = (text: string) => {
+        if (checkDuplicate(tasks, text)) {
+            return;
+        }
         if (text === "") {
             alert("You didn't enter anything. Enter a descriptive task.")
         } else {
@@ -42,11 +46,18 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
         };
     };
 
-    //todo: implement check for duplicate task text.
+    const checkDuplicate = (taskArray: Task[], newText: string): boolean => {
+        const isDuplicate = taskArray.some((task) => 
+            task.text === newText); 
+
+        if (isDuplicate) {alert("You already added that task.")};
+
+        return isDuplicate;
+    };
 
     const deleteTask = (text: string) => {
         setTasks((tasks) => tasks.filter((task) => task.text !== text))
-    }
+    };
 
     const toggleTask = (text: string) => {
         setTasks((oldTasks) => {
@@ -79,6 +90,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     const contextValues = {
         tasks,
         addTask,
+        checkDuplicate,
         currentTask,
         deleteTask,
         toggleTask,

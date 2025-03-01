@@ -8,6 +8,7 @@ export interface TaskContextProps {
     tasks: Task[];
     currentTask: Task | null;
     addTask: (text: string) => void;
+    checkDuplicate: (taskArray: Task[], newText: string) => boolean;
     deleteTask: (text: string) => void;
     toggleTask: (text: string) => void;
     editTask: (id: number, text: string) => void;
