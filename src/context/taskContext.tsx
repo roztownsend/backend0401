@@ -7,14 +7,18 @@ interface TaskProviderProps {
 }
 
   const dummyTasks: Task[] = [
-    {id: Math.random(), text: "Steal hearts", isComplete: false},
-    {id: Math.random(), text: "Boggle minds", isComplete: false},
-    {id: Math.random(), text: "Add a cool task", isComplete: false},
+    {id: 9997, text: "Steal hearts", isComplete: false},
+    {id: 9998, text: "Boggle minds", isComplete: false},
+    {id: 9999, text: "Add a cool task", isComplete: false},
   ];
+
+  let nextId: number = 0;
 
   export const TaskContext = createContext<TaskContextProps>({
     tasks: [],
     currentTask: null,
+    completeCount: () => 0,
+    completedTaskNumber: 0,
     addTask: () => {},
     checkDuplicate: () => false,
     deleteTask: () => {},
@@ -29,6 +33,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     const [tasks, setTasks] = useLocalStorage<Task[]>("tasks", dummyTasks);
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [currentTask, setCurrentTask] = useState<Task | null>(null);
+    const [completedTaskNumber, setCompletedTaskNumber] = useState<number>(0);
 
     let updatedTasks;
 
@@ -41,7 +46,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
         } else {
             setTasks(oldTasks => [
                 ...oldTasks, 
-                { id: Math.random(), text, isComplete: false }
+                { id: nextId++, text, isComplete: false }
             ]);
         };
     };
@@ -59,11 +64,17 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
         setTasks((tasks) => tasks.filter((task) => task.text !== text))
     };
 
+    const completeCount = (taskArray: Task[]) => {
+        const completedArray = taskArray.filter((task) => task.isComplete === true)
+        setCompletedTaskNumber(completedArray.length);
+    }
+
     const toggleTask = (text: string) => {
         setTasks((oldTasks) => {
             updatedTasks = oldTasks.map((task) => 
                 task.text === text ? 
                 {...task, isComplete: !task.isComplete} : task)
+                completeCount(updatedTasks);
                 return updatedTasks;
             });
     } 
@@ -89,6 +100,8 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
 
     const contextValues = {
         tasks,
+        completeCount,
+        completedTaskNumber,
         addTask,
         checkDuplicate,
         currentTask,

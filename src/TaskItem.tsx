@@ -9,8 +9,6 @@ export const TaskItem = ({task}: TaskItemProps) => {
 
 const { deleteTask, toggleTask, editTask } = useContext(TaskContext);
 
-//todo: add GrCheckbox (unchecked) and logic for "mark incomplete".
-
 const accessLabels = {
     toggle: "Mark Complete",
     untoggle: "Mark Incomplete",

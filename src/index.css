@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+body {
+  background-image: url("./plants/plant_01.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  height: 99vh;
+}
+
 @layer components {
   body {
     @apply flex 
