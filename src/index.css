@@ -1,16 +1,14 @@
 @import "tailwindcss";
 
-body {
-  background-image: url("./plants/plant_01.png");
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  height: 99vh;
-}
-
 @layer components {
   body {
-    @apply flex 
-    bg-orange-200;
+    @apply bg-orange-200;
+  }
+
+  main {
+    @apply 
+    grid
+      grid-cols-3 grid-rows-1;
   }
 
   h1 {
@@ -26,13 +24,33 @@ body {
   }
 }
 
+.plant {
+  @apply
+  col-start-1 h-full
+  flex
+    flex-col justify-end;
+}
+
+.plant-pic {
+  @apply 
+  flex
+    justify-center;
+}
+
+.tasks {
+  @apply
+  col-start-2;
+}
+
 .tasklist {
-  @apply grid 
-  grid-cols-1 grid-rows-2 max-w-2xl;
+  @apply 
+  grid 
+    grid-cols-1 grid-rows-2;
 }
 
 .task-item {
-  @apply grid 
+  @apply 
+  grid 
     grid-cols-4 grid-rows-1 
     px-4 py-2 
     border-b border-green-800 bg-orange-100
@@ -44,10 +62,14 @@ body {
 }
 
 .task-item__actions {
-  @apply col-start-4 col-end-4 flex gap-3 items-center;
+  @apply col-start-4 col-end-4 
+  flex 
+    gap-3 items-center;
 }
 
 .add-task {
-  @apply flex items-stretch gap-3 ;
+  @apply 
+  flex 
+    items-stretch gap-3;
 
 }

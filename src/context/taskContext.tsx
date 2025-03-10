@@ -18,7 +18,7 @@ interface TaskProviderProps {
     tasks: [],
     currentTask: null,
     completeCount: () => 0,
-    completedTaskNumber: 0,
+    completeTaskNumber: 0,
     addTask: () => {},
     checkDuplicate: () => false,
     deleteTask: () => {},
@@ -33,7 +33,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     const [tasks, setTasks] = useLocalStorage<Task[]>("tasks", dummyTasks);
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [currentTask, setCurrentTask] = useState<Task | null>(null);
-    const [completedTaskNumber, setCompletedTaskNumber] = useState<number>(0);
+    const [completedTaskNumber, setCompletedTaskNumber] = useLocalStorage<number>("tasks complete", 0);
 
     let updatedTasks;
 
