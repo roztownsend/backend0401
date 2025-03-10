@@ -2,11 +2,11 @@
 
 @layer components {
   body {
-    @apply bg-orange-200;
+    @apply bg-orange-200 h-screen;
   }
 
   main {
-    @apply 
+    @apply h-screen overflow-auto
     grid
       grid-cols-3 grid-rows-1;
   }
@@ -26,9 +26,7 @@
 
 .plant {
   @apply
-  col-start-1 h-full
-  flex
-    flex-col justify-end;
+  fixed bottom-0 left-0 py-8 px-8;
 }
 
 .plant-pic {
@@ -53,8 +51,7 @@
   grid 
     grid-cols-4 grid-rows-1 
     px-4 py-2 
-    border-b border-green-800 bg-orange-100
-    mb-2;
+    border-b border-green-800 bg-orange-100;
 }
 
 .task-item__label {
@@ -71,5 +68,12 @@
   @apply 
   flex 
     items-stretch gap-3;
+}
 
+input {
+  @apply w-9/12;
+}
+
+.add-button {
+  @apply w-3/12 bg-orange-800;
 }

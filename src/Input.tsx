@@ -42,7 +42,7 @@ export const Input = ({ addTask }: InputProps) => {
                     {alternateSubmitLabels}
                 </button>
                 {isEditing && 
-                <button 
+                <button className="add-button"
                     aria-label="Cancel Edit" 
                     onClick={() => cancelEditTask()}>
                     Cancel Edit
