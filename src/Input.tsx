@@ -16,8 +16,6 @@ export const Input = ({ addTask }: InputProps) => {
         }
     }, [isEditing, currentTask]);
 
-    // remove handleTextChange 
-
     const handleSubmit = () => {
         if (isEditing && currentTask) {
             saveEditTask(currentTask.id, text)
@@ -27,11 +25,21 @@ export const Input = ({ addTask }: InputProps) => {
         setText("");
     }
 
+    const handleEnterPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            handleSubmit();
+        }
+    }
+
+    
     const alternateSubmitLabels = isEditing ? "Save Task" : "Add Task";
 
     return (
         <div className="add-task">
             <input
+                id="add-task-input"
+                onKeyUp={handleEnterPress}
                 value={text}
                 aria-label="Enter task"
                 onChange={(e) => setText(e.target.value)}
