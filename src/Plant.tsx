@@ -19,20 +19,12 @@ const Plant = () => {
             plantAlt = `Pixel art of your compeleted plant.`
         }
 
-
-    const plantStatus = completeTaskNumber < 10 ? 
-    `Your plant is still growing!` : 
-    `You've grown a gorgeous plant!`;
-
     return (
     <section className="plant">
         <div className="plant-pic">
             <img 
                 src={`/plants/plant_${plantPicFileName}.png`} 
                 alt={plantAlt} title={plantAlt} />
-        </div>
-        <div className="plant-status">
-            {plantStatus}
         </div>
     </section>
   )

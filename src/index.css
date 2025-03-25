@@ -2,54 +2,55 @@
 
 @layer components {
   body {
-    @apply bg-orange-200 h-screen;
+    @apply bg-orange-200;
   }
 
   main {
-    @apply h-screen overflow-auto
-    grid
-      grid-cols-3 grid-rows-1;
+    @apply overflow-auto
+    md:flex; 
+  }
+
+  .tasks {
+    @apply md:w-3/4;
   }
 
   h1 {
-    @apply text-5xl px-4 py-6;
+    @apply text-xl
+    lg:text-2xl;
   }
 
   input {
-    @apply bg-white px-4 py-2 rounded;
+    @apply bg-white p-2 rounded;
   }
 
   button {
-    @apply bg-green-200 px-4 py-2 rounded;
+    @apply p-2 rounded;
   }
 }
 
 .plant {
   @apply
-  fixed bottom-0 left-0 py-8 px-8;
+  fixed bottom-0 z-0 left-0 py-2
+  md:col-start-1 md:relative md:self-center md:max-w-md;
 }
 
 .plant-pic {
-  @apply 
-  flex
+  @apply w-1/2 
+  flex 
     justify-center;
-}
-
-.tasks {
-  @apply
-  col-start-2;
 }
 
 .tasklist {
   @apply 
   grid 
-    grid-cols-1 grid-rows-2;
+    gap-2 grid-cols-1 grid-rows-2
+    md:col-start-2;
 }
 
 .task-item {
   @apply 
-  grid 
-    grid-cols-4 grid-rows-1 
+  flex justify-between
+    mt-2 grid-cols-4 grid-rows-1 
     px-4 py-2 
     border-b border-green-800 bg-orange-100;
 }
@@ -65,8 +66,8 @@
 }
 
 .add-task {
-  @apply 
-  flex 
+  @apply z-40
+  flex flex-col
     items-stretch gap-3;
 }
 
@@ -75,5 +76,9 @@ input {
 }
 
 .add-button {
-  @apply w-1/4 bg-orange-800;
+  @apply bg-green-300;
+}
+
+.cancel-button {
+  @apply bg-red-300;
 }

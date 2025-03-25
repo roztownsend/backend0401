@@ -44,13 +44,13 @@ export const Input = ({ addTask }: InputProps) => {
                 aria-label="Enter task"
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Enter a task!" />
-                <button 
+                <button className="add-button"
                     aria-label={alternateSubmitLabels}
                     onClick={handleSubmit}>
                     {alternateSubmitLabels}
                 </button>
                 {isEditing && 
-                <button className="add-button"
+                <button className="cancel-button"
                     aria-label="Cancel Edit" 
                     onClick={() => cancelEditTask()}>
                     Cancel Edit

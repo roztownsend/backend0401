@@ -11,10 +11,17 @@ function App() {
 
    const { tasks, completeTaskNumber, addTask, editTask } = useContext(TaskContext);
 
+   const plantStatus = completeTaskNumber < 10 ? 
+   `Your plant is still growing!` : 
+   `You've grown a gorgeous plant!`;
+
+
   return (
     <section className="tasks">
       <h1>Personal Task Manager</h1>
-      <div className="current-count">Completed Tasks: {completeTaskNumber}</div>
+      <div className="current-count">Completed Tasks: <strong>{completeTaskNumber}</strong><br />
+      {plantStatus}
+      </div>
         <div className="tasklist">
           <div className="tasklist-items">
             {tasks.map(task => (
