@@ -4,23 +4,23 @@ import { TaskContext } from "./context/taskContext";
 let plantAlt: string;
 
 const Plant = () => {
-    const { completedTaskNumber } = useContext(TaskContext);
+    const { completeTaskNumber } = useContext(TaskContext);
 
-    const plantPicFileName: string = completedTaskNumber < 10 ? 
-    `0${completedTaskNumber}` : `10`;
+    const plantPicFileName: string = completeTaskNumber < 10 ? 
+    `0${completeTaskNumber}` : `10`;
 
-        if (completedTaskNumber === 0) {
+        if (completeTaskNumber === 0) {
             plantAlt = `Pixel art of a plant pot.`;
-        } else if (completedTaskNumber == 1) {
+        } else if (completeTaskNumber == 1) {
             plantAlt = `Pixel art of a potted plant with one leaf.`
-        } else if (completedTaskNumber < 10) {
-            plantAlt = `Pixel art of a potted plant with ${completedTaskNumber} leaves.`
+        } else if (completeTaskNumber < 10) {
+            plantAlt = `Pixel art of a potted plant with ${completeTaskNumber} leaves.`
         } else {
             plantAlt = `Pixel art of your compeleted plant.`
         }
 
 
-    const plantStatus = completedTaskNumber < 10 ? 
+    const plantStatus = completeTaskNumber < 10 ? 
     `Your plant is still growing!` : 
     `You've grown a gorgeous plant!`;
 
