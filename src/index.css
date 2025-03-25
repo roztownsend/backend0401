@@ -71,9 +71,9 @@
 }
 
 input {
-  @apply w-9/12;
+  @apply flex-grow;
 }
 
 .add-button {
-  @apply w-3/12 bg-orange-800;
+  @apply w-1/4 bg-orange-800;
 }
