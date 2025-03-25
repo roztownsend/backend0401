@@ -23,7 +23,7 @@ const Plant = () => {
     <section className="plant">
         <div className="plant-pic">
             <img 
-                src={`/plants/plant_${plantPicFileName}.png`} 
+                src={`./plants/plant_${plantPicFileName}.png`} 
                 alt={plantAlt} title={plantAlt} />
         </div>
     </section>
