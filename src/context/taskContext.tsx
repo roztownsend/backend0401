@@ -17,7 +17,6 @@ interface TaskProviderProps {
   export const TaskContext = createContext<TaskContextProps>({
     tasks: [],
     currentTask: null,
-    completeCount: () => 0,
     completeTaskNumber: 0,
     addTask: () => {},
     checkDuplicate: () => false,
@@ -33,7 +32,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     const [tasks, setTasks] = useLocalStorage<Task[]>("tasks", dummyTasks);
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [currentTask, setCurrentTask] = useState<Task | null>(null);
-    const [completedTaskNumber, setCompletedTaskNumber] = useLocalStorage<number>("tasks complete", 0);
+    const [completeTaskNumber, setCompleteTaskNumber] = useLocalStorage<number>("tasks complete", 0);
 
     let updatedTasks;
 
@@ -66,7 +65,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
 
     const completeCount = (taskArray: Task[]) => {
         const completedArray = taskArray.filter((task) => task.isComplete === true)
-        setCompletedTaskNumber(completedArray.length);
+        setCompleteTaskNumber(completedArray.length);
     }
 
     const toggleTask = (text: string) => {
@@ -101,7 +100,7 @@ const TaskProvider: React.FC<TaskProviderProps> = ({children}) => {
     const contextValues = {
         tasks,
         completeCount,
-        completedTaskNumber,
+        completeTaskNumber,
         addTask,
         checkDuplicate,
         currentTask,

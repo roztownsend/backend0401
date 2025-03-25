@@ -6,7 +6,7 @@ export interface Task {
 
 export interface TaskContextProps {
     tasks: Task[];
-    completeCount: (taskArray: Task[]) => number;
+    completeTaskNumber: number;
     currentTask: Task | null;
     addTask: (text: string) => void;
     checkDuplicate: (taskArray: Task[], newText: string) => boolean;

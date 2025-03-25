@@ -9,12 +9,12 @@ import { TaskItem } from "./TaskItem"
 
 function App() {
 
-   const { tasks, completedTaskNumber, addTask, editTask } = useContext(TaskContext);
+   const { tasks, completeTaskNumber, addTask, editTask } = useContext(TaskContext);
 
   return (
     <section className="tasks">
       <h1>Personal Task Manager</h1>
-      <div className="current-count">Completed Tasks: {completedTaskNumber}</div>
+      <div className="current-count">Completed Tasks: {completeTaskNumber}</div>
         <div className="tasklist">
           <div className="tasklist-items">
             {tasks.map(task => (
